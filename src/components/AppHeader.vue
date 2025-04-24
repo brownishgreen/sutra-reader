@@ -61,14 +61,14 @@ const toggleTheme = () => {
         align-items: center;
         justify-content: center;
         padding: 6px 6px;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         border: 0px;
         background-color: transparent;
         cursor: pointer;
         transition: background-color 0.2s;
 
         &:hover {
-          background-color: #eee;
+          color: rgb(96, 124, 211);
         }
 
         &.icon-button {
