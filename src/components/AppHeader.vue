@@ -1,10 +1,10 @@
 <template>
   <header class="app-header">
     <div class="header-content">
-      <h1 class="site-title">金剛經閱讀器 Sutra Reader</h1>
+      <button class="site-title">金剛經閱讀器 Sutra Reader</button>
       <nav class="nav-buttons">
-        <button @click="showAbout">About</button>
-        <button @click="showContact">Contact</button>
+        <button @click="$emit('navigate', 'about')">About</button>
+        <button @click="$emit('navigate', 'contact')">Contact</button>
         <button @click="toggleTheme" class="icon-button" tittle="toggle theme mode">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 24" fill="currentColor" class="size-6 icon">
             <path
@@ -29,6 +29,8 @@ const showContact = () => {
 const toggleTheme = () => {
   console.log('Toggle theme mode (Light/Dark)')
 }
+
+defineEmits(['navigate'])
 </script>
 
 <style scoped lang="scss">
@@ -40,23 +42,7 @@ const toggleTheme = () => {
   top: 0;
   z-index: 10;
 
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .site-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .nav-buttons {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      button {
+    button {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -77,6 +63,22 @@ const toggleTheme = () => {
           padding: 0;
         }
       }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .site-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .icon {
