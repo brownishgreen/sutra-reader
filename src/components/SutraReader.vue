@@ -5,7 +5,11 @@
       <div v-for="item in sutraList" :key="item.id" class="sutra-block">
         <h3 class="chapter">{{ item.chapter }}</h3>
         <p class="text">{{ item.text }}</p>
-        <p class="note">{{ item.note }}</p>
+        
+        <!--Explaination Tooltip-->
+        <div class="note-tooltip" v-if="item.note">
+          {{ item.note }}
+        </div>
       </div>
     </div>
 </template>
@@ -31,11 +35,35 @@ const sutraList = ref<SutraChapter[]>(sutraData)
 }
 
 .sutra-block {
+  position: relative;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 24px;
   background: #fff;
+
+  .note-tooltip {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease,visibility 1.5s ease;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #fff8dc;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #555;
+    z-index: 10;
+  }
+
+  &:hover .note-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .chapter {
