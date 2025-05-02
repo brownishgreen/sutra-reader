@@ -6,3 +6,25 @@
   box-sizing: border-box;
   font-family: 'Cactus Classical Serif', serif;
 }
+:root {
+  --bg-color: #ffffff;
+  --card-bg: #ffffff;
+  --text-color: #1a1a1a;
+}
+
+.dark {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #eeeeee;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 1.2s ease, color 1.2s ease;
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}

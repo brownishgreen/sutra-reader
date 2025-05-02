@@ -1,5 +1,5 @@
 <template>
-  <AppHeader @navigate="handleNavigate"/>
+  <AppHeader @navigate="handleNavigate" />
   <RouterView />
   <AppFooter v-if="route.name === 'sutra'" :progress="0" />
   <CopyrightFooter v-else />
@@ -16,7 +16,6 @@ const router = useRouter()
 const handleNavigate = (page: string) => {
   router.push(`/${page}`)
 }
-
 
 </script>
 

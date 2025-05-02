@@ -67,7 +67,7 @@ onMounted(() => {
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 24px;
-  background: #fff;
+  background: var(--card-bg);
   box-shadow: 0 0 5px rgba(213, 212, 212, 0.716);
 
   opacity: 0;
@@ -86,12 +86,12 @@ onMounted(() => {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: #e5dab4;
+    background: #efe8cf;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     width: 350px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     color: #555;
     z-index: 10;

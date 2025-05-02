@@ -22,7 +22,6 @@
   img {
     width: 80%;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px rgb(188, 186, 186);
   }
   p {
     margin-top: 5%;

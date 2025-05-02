@@ -13,7 +13,8 @@ defineProps<{ progress: number }>()
 
 <style scoped lang="scss">
 footer {
-  background-color: #f8f8f8;
+  background-color: var(--card-bg);
+  color: var(--text-color);
   border-top: 1px solid #ccc;
   padding: 20px;
   text-align: center;
