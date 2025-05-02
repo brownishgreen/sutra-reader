@@ -5,7 +5,7 @@
     <AboutPage v-else-if="currentPage === 'about'" />
     <ContactPage v-else-if="currentPage === 'contact'" />
   </main>
-  <AppFooter />
+  <AppFooter :progress="0" />
 </template>
 
 <script setup lang="ts">
