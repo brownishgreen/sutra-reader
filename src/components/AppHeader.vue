@@ -14,8 +14,8 @@
           ref="menuRef" 
           @mouseleave="isMobile && (isMenuOpen = false)"
         >
-        <button @click="$emit('navigate', 'about')">About</button>
-        <button @click="$emit('navigate', 'contact')">Contact</button>
+        <button @click="$emit('navigate', '/about')">About</button>
+        <button @click="$emit('navigate', '/contact')">Contact</button>
         <button @click="toggleTheme" class="icon-button" tittle="toggle theme mode">
           <svg v-if="!isDarkMode" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 24" fill="currentColor" class="size-6 icon">
             <path
