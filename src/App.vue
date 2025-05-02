@@ -1,24 +1,20 @@
 <template>
-  <AppHeader @navigate="handleNavigate" />
-  <main>
-    <SutraReader v-if="currentPage === 'sutra'" />
-    <AboutPage v-else-if="currentPage === 'about'" />
-    <ContactPage v-else-if="currentPage === 'contact'" />
-  </main>
-  <AppFooter :progress="0" />
+  <AppHeader @navigate="handleNavigate"/>
+  <RouterView />
+  <AppFooter v-if="route.name === 'sutra'" :progress="0" />
+  <CopyrightFooter v-else />
 </template>
 
 <script setup lang="ts">
+import { useRouter, useRoute } from 'vue-router'
 import AppHeader from './components/AppHeader.vue'
-import AboutPage from './components/AboutPage.vue'
-import ContactPage from './components/ContactPage.vue'
-import SutraReader from './components/SutraReader.vue'
 import AppFooter from './components/AppFooter.vue'
+import CopyrightFooter from './components/CopyrightFooter.vue'
 
-import { ref } from 'vue'
-const currentPage = ref('sutra')
+const route = useRoute()
+const router = useRouter()
 const handleNavigate = (page: string) => {
-  currentPage.value = page
+  router.push(`/${page}`)
 }
 
 
