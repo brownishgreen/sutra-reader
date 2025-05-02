@@ -23,6 +23,10 @@
 import { ref, onMounted } from 'vue';
 import sutraData from '../assets/diamond-sutra.json';
 
+const emit = defineEmits<{
+  (e: 'update:progress', value: number):void
+}>()
+
 interface SutraChapter {
   id: number
   chapter: string
@@ -31,6 +35,13 @@ interface SutraChapter {
 }
 const sutraList = ref<SutraChapter[]>(sutraData)
 const visibleChapters = ref<number[]>([])
+
+const updateProgress = () => {
+  const scrollTop = window.scrollY
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight
+  const percent = Math.min(100, Math.round((scrollTop / docHeight) * 100))
+  emit('update:progress', percent)
+}
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -51,6 +62,9 @@ onMounted(() => {
     el.setAttribute('data-id', String(index + 1))
     observer.observe(el)
   })
+
+  window.addEventListener('scroll', updateProgress)
+  updateProgress()
 })
 </script>
 
