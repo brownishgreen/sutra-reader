@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <img src="../assets/images/contact-mail-image.avif" alt="">
-    <h2>如有內容/釋義錯誤，懇請不吝聯絡。</h2>
+    <p>如有內容/釋義錯誤，懇請不吝聯絡。</p>
     <br>
     <p>E-mail: jjjjjimyuan@gmail.com</p>
   </div>

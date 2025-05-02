@@ -1,6 +1,6 @@
 <template>
     <div class="sutra-reader">
-      <h2>金剛經誦讀</h2>
+      <p>金剛經誦讀</p>
       <br>
       <div 
           v-for="item in sutraList" 
