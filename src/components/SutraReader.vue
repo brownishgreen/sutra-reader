@@ -2,7 +2,12 @@
     <div class="sutra-reader">
       <h2>金剛經誦讀</h2>
       <br>
-      <div v-for="item in sutraList" :key="item.id" class="sutra-block">
+      <div 
+          v-for="item in sutraList" 
+          :key="item.id" 
+          class="sutra-block"
+          :class="{ 'visible': visibleChapters.includes(item.id)}"
+      >
         <h3 class="chapter">{{ item.chapter }}</h3>
         <p class="text">{{ item.text }}</p>
         
@@ -15,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import sutraData from '../assets/diamond-sutra.json';
 
 interface SutraChapter {
@@ -25,6 +30,28 @@ interface SutraChapter {
   note: string
 }
 const sutraList = ref<SutraChapter[]>(sutraData)
+const visibleChapters = ref<number[]>([])
+
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = Number(entry.target.getAttribute('data-id'))
+        if (!visibleChapters.value.includes(id)) {
+          visibleChapters.value.push(id)
+        }
+      }
+    })
+  }, {
+    threshold: 0.1  // 進入視窗10%就觸發
+  })
+
+  const elements = document.querySelectorAll('.sutra-block')
+  elements.forEach((el, index) => {
+    el.setAttribute('data-id', String(index + 1))
+    observer.observe(el)
+  })
+})
 </script>
 
 <style scoped lang="scss">
@@ -41,6 +68,16 @@ const sutraList = ref<SutraChapter[]>(sutraData)
   padding: 16px;
   margin-bottom: 24px;
   background: #fff;
+  box-shadow: 0 0 5px rgba(213, 212, 212, 0.716);
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 3s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   .note-tooltip {
     opacity: 0;
@@ -49,15 +86,16 @@ const sutraList = ref<SutraChapter[]>(sutraData)
     position: absolute;
     top: 10px;
     right: 10px;
-    background: #fff8dc;
+    background: #e5dab4;
     padding: 8px 12px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 250px;
+    border-radius: 8px;
+    width: 350px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     color: #555;
     z-index: 10;
+    white-space: pre-line; // \n -> <br>
   }
 
   &:hover .note-tooltip {
@@ -69,11 +107,11 @@ const sutraList = ref<SutraChapter[]>(sutraData)
 .chapter {
   color: #a14f5d;
   margin-bottom: 12px;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .text {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.8;
 }
 

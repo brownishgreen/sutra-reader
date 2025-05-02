@@ -15,13 +15,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  outline: 1px solid blue;
   height: 100vh;
   margin: 0 auto;
 
   img {
     width: 80%;
     border-radius: 8px;
+    box-shadow: 5px 5px 5px rgb(188, 186, 186);
   }
   p {
     margin-top: 5%;

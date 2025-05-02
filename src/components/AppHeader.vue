@@ -2,7 +2,12 @@
   <header class="app-header">
     <div class="header-content">
       <button class="site-title">金剛經閱讀器 Sutra Reader</button>
-      <nav class="nav-buttons">
+
+      <!--Hamburger-->
+      <button class="hamburger" @click="isMenuOpen = !isMenuOpen" ref="hamburgerRef">
+      ☰
+      </button>
+      <nav class="nav-buttons" v-if="isMenuOpen" ref="menuRef" @mouseleave="isMenuOpen = false">
         <button @click="$emit('navigate', 'about')">About</button>
         <button @click="$emit('navigate', 'contact')">Contact</button>
         <button @click="toggleTheme" class="icon-button" tittle="toggle theme mode">
@@ -18,13 +23,31 @@
 </template>
 
 <script setup lang="ts">
-const showAbout = () => {
-  console.log('Show About modal or section')
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const isMenuOpen = ref(false)
+const menuRef = ref<HTMLElement | null>(null)
+const hamburgerRef = ref<HTMLElement | null>(null)
+
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target as Node
+  if (
+    menuRef.value &&
+    !menuRef.value.contains(target) &&
+    hamburgerRef.value &&
+    !hamburgerRef.value.contains(target)
+  ) {
+    isMenuOpen.value = false
+  }
 }
 
-const showContact = () => {
-  console.log('Show Contact modal or section')
-}
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 
 const toggleTheme = () => {
   console.log('Toggle theme mode (Light/Dark)')
@@ -35,9 +58,11 @@ defineEmits(['navigate'])
 
 <style scoped lang="scss">
 .app-header {
-  background-color: #f8f8f8;
+  background-color: #efecec;
   padding: 16px 24px;
   border-bottom: 1px solid #ddd;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 0 5px rgb(190, 189, 189);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -85,6 +110,44 @@ defineEmits(['navigate'])
       width: 26px;
       height: 26px;
       color: #333;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  //Mobile View
+  @media (max-width:768px) {
+    .header-content {
+      flex-wrap: wrap;
+
+      .hamburger{
+        display:block;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 20;
+
+        button{
+          width:100%;
+          justify-content: flex-start;
+          padding: 10px 12px;
+        }
+      }
     }
   }
 }
