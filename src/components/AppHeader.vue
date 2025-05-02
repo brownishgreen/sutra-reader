@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <div class="header-content">
-      <button class="site-title" @click="$emit('navigate', '/')">金剛經閱讀器 Sutra Reader</button>
+      <button class="site-title" @click="$emit('navigate', 'home')">金剛經閱讀器 Sutra Reader</button>
       <!--Hamburger-->
       <button class="hamburger" @click="isMenuOpen = !isMenuOpen" ref="hamburgerRef">
       ☰
