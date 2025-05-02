@@ -121,11 +121,11 @@ onMounted(() => {
 .chapter {
   color: #a14f5d;
   margin-bottom: 12px;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .text {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
