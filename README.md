@@ -30,7 +30,6 @@ A web application for reciting and reflecting on the Diamond Sutra, designed to 
 - [Vite](https://vitejs.dev/)
 - [SCSS](https://sass-lang.com/)
 - [GitHub Pages](https://pages.github.com/)
-- [Custom Domain + Subdomain](https://yuanologue.com)
 
 ## Live Preview 線上預覽
 
