@@ -8,7 +8,7 @@
           class="sutra-block"
           :class="{ 'visible': visibleChapters.includes(item.id)}"
       >
-        <h3 class="chapter">{{ item.chapter }}</h3>
+        <p class="chapter">{{ item.chapter }}</p>
         <p class="text">{{ item.text }}</p>
         
         <!--Explaination Tooltip-->
@@ -96,9 +96,9 @@ onMounted(() => {
   .note-tooltip {
     opacity: 0;
     visibility: hidden;
-    transition: opacity 1s ease,visibility 1.5s ease;
+    transition: opacity 1.5s ease,visibility 1.5s ease;
     position: absolute;
-    top: 10px;
+    top: -20px;
     right: 10px;
     background: #efe8cf;
     padding: 8px 12px;
@@ -108,7 +108,7 @@ onMounted(() => {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     color: #555;
-    z-index: 10;
+    z-index: 25;
     white-space: pre-line; // \n -> <br>
   }
 
@@ -121,7 +121,7 @@ onMounted(() => {
 .chapter {
   color: #a14f5d;
   margin-bottom: 12px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .text {
