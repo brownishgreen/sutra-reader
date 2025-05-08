@@ -1,6 +1,6 @@
 <template>
     <div class="sutra-reader">
-      <p>金剛經誦讀</p>
+      <p class="title">金剛經誦讀</p>
       <br>
       <div 
           v-for="item in sutraList" 
@@ -98,17 +98,16 @@ onMounted(() => {
     visibility: hidden;
     transition: opacity 1.5s ease,visibility 1.5s ease;
     position: absolute;
-    top: -20px;
-    right: 10px;
+    top: -115px;
     background: #efe8cf;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    width: 350px;
+    width: 100%;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     color: #555;
-    z-index: 25;
+    z-index:9999;
     white-space: pre-line; // \n -> <br>
   }
 
@@ -118,10 +117,17 @@ onMounted(() => {
   }
 }
 
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .chapter {
   color: #a14f5d;
   margin-bottom: 12px;
   font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .text {
