@@ -33,7 +33,7 @@ A web application for reciting and reflecting on the Diamond Sutra, designed to 
 
 ## Live Preview 線上預覽
 
-https://brownishgreen.github.io/sutra-reader/home
+[https://brownishgreen.github.io/sutra-reader/home](https://brownishgreen.github.io/sutra-reader)
 
 ## Installation & Development 安裝與開發
 
