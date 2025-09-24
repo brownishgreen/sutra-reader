@@ -1,7 +1,5 @@
 <template>
     <div class="sutra-reader">
-      <p class="title">金剛經誦讀</p>
-      <br>
       <div 
           v-for="item in sutraList" 
           :key="item.id" 
@@ -71,7 +69,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .sutra-reader {
   max-width: 800px;
-  margin: 40px auto;
+  margin: 10px auto;
   padding: 20px;
 }
 

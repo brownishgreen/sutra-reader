@@ -116,9 +116,13 @@ defineEmits(['navigate'])
     align-items: center;
 
     .site-title {
-      font-size: 1rem;
+      font-size: 1.6rem;
       font-weight: bold;
       margin: 0;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
     }
 
     .nav-buttons {
