@@ -64,6 +64,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateIsMobile)
   document.removeEventListener('click', handleClickOutside)
 })
 
